@@ -18,10 +18,14 @@ function App() {
         <BrowserRouter>
             <div>
                 {/* links*/}
-                <NavLink to={"/"}>main</NavLink>
-                <NavLink to={"/login"}>login</NavLink>
-                <NavLink to={"/profile"}>profile</NavLink>
-                <NavLink to={"/profile/1"}>profile-1</NavLink>
+                <NavLink to={"/"}>main</NavLink> ----
+                <NavLink to={"/login"}>login</NavLink> ----
+                <NavLink to={"/profile"}>profile</NavLink> ----
+                <NavLink to={"/profile/1"}>profile-1</NavLink> ----
+                <NavLink to={"/profile/settings"} className={(isActive) => {
+                    return isActive.isActive ? 'act' : ''
+                }}>settings</NavLink> ----
+                <a href="https://reactrouter.com/en/main" target={"_blank"} rel={'noreferrer nofollow noopener'}>xxx</a>
 
                 <Routes>
                     <Route path={'/'} element={<div>main</div>}/>
@@ -29,6 +33,7 @@ function App() {
                     <Route path={'/login'} element={<div>login</div>}/>
                     {/*<Route path={'/profile/:id'} element={<Profile/>}/>*/}
                     <Route path={'/profile/*'} element={<Profile/>}/>
+                    <Route path={'/profile/settings'} element={<div>settings</div>}/>
                 </Routes>
             </div>
         </BrowserRouter>
