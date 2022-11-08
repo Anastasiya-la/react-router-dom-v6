@@ -1,14 +1,24 @@
 import React from 'react';
 import './App.css';
-import {BrowserRouter, NavLink, Route, Routes, useParams} from "react-router-dom";
+import {BrowserRouter, NavLink, Route, Routes, useNavigate, useParams, useSearchParams} from "react-router-dom";
 
 const Profile = () => {
+    let [searchParams, setSearchParams] = useSearchParams();
+    console.log(searchParams.get('name'));
+    console.log(Object.fromEntries(searchParams));
+
+    const navigate = useNavigate()
     const params = useParams();
     const some = params;
     console.log(some);
     return (
         <div>
             profile
+            <button onClick={() => navigate('/login')}>logout</button>
+    {/*        <button onClick={() => setSearchParams({age: "32"})}>add age</button>*/}
+            <button onClick={() => setSearchParams({...Object.fromEntries(searchParams), age: "32"})}>add age</button>
+
+            {/*  <button onClick={() => navigate(-1)}>logout</button> return to a previous page*/}
         </div>
     )
 }
